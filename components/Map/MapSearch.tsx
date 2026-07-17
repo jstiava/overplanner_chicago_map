@@ -125,7 +125,7 @@ export default function MapSearch() {
                         role="combobox"
                         aria-expanded={open}
                     >
-                        <div className="w-full text-left truncate text-sm outline-hidden disabled:cursor-not-allowed opacity-50"> {query || "Search address..."}</div>
+                        <div className="w-full text-base text-left truncate outline-hidden disabled:cursor-not-allowed opacity-50"> {query || "Search address..."}</div>
                         <InputGroupAddon>
                             <SearchIcon className="size-4 shrink-0 opacity-50" />
                         </InputGroupAddon>
@@ -142,7 +142,7 @@ export default function MapSearch() {
             >
                 <Command shouldFilter={false}>
                     <CommandInput
-                    className="w-full"
+                    className="w-full text-base"
                         placeholder="Search address..."
                         value={query}
                         onValueChange={setQuery}
