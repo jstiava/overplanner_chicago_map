@@ -59,7 +59,7 @@ export default function WatchUserPosition({
                                     properties: {},
                                 },
                             ],
-                        };
+                        } as any;
 
                         (
                             map.getSource(sourceId) as maplibregl.GeoJSONSource
