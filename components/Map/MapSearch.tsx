@@ -2,7 +2,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { useMap } from "./MapContext";
 import * as React from "react";
-import { Check, ChevronsUpDown, SearchIcon } from "lucide-react";
+import { Check, ChevronsUpDown, SearchIcon, XIcon } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -120,8 +120,8 @@ export default function MapSearch() {
     return (
         <Popover open={open} onOpenChange={setOpen}>
             <PopoverTrigger className={'w-full'}>
-                <div className="p-1 pb-0 max-w-[400px] w-full shadow-md rounded-md">
-                    <InputGroup className="h-10! rounded-lg! border-input/30 bg-input/30 shadow-none! *:data-[slot=input-group-addon]:pl-2! bg-white w-full flex gap-2"
+                <div className="p-1 pb-0 w-full shadow-lg rounded-md">
+                    <InputGroup className="h-12! px-1 rounded-lg! border-input/30 bg-input/30 shadow-none! *:data-[slot=input-group-addon]:pl-2! bg-white w-full flex gap-2"
                         role="combobox"
                         aria-expanded={open}
                     >
@@ -134,21 +134,24 @@ export default function MapSearch() {
 
             </PopoverTrigger>
 
-            <PopoverContent 
-                className="left-0 p-0 w-[var(--anchor-width)] max-w-[400px]"
+            <PopoverContent
+                className="left-0 p-0 w-[var(--anchor-width)] max-w-[400px] "
                 side="bottom"
                 align="start"
                 sideOffset={-44} // overlap the trigger
             >
                 <Command shouldFilter={false}>
                     <CommandInput
-                    className="w-full text-base"
+                        className="w-full text-base"
                         placeholder="Search address..."
                         value={query}
                         onValueChange={setQuery}
                     />
 
-                    <CommandList>
+                    <CommandList className="relative max-h-[40vh] py-0">
+
+
+
                         {loading && (
                             <CommandEmpty>
                                 Searching...
@@ -173,8 +176,8 @@ export default function MapSearch() {
                                     }}
                                     className="p-0"
                                 >
-                                    <div className="flex w-full items-start gap-3 rounded-lg p-3">
-                                        <div className="mt-1 rounded-full bg-muted p-2">
+                                    <div className="flex w-full items-start gap-3 rounded-lg p-2">
+                                        <div className="mt-1 rounded-full bg-muted p-0">
                                             📍
                                         </div>
 
@@ -183,7 +186,7 @@ export default function MapSearch() {
                                                 {place.name.split(",")[0]}
                                             </span>
 
-                                            <span className="mt-1 text-sm text-muted-foreground">
+                                            <span className="mt-1 text-xs text-muted-foreground line-clamp-2">
                                                 {place.name
                                                     .split(",")
                                                     .slice(1)
@@ -191,14 +194,27 @@ export default function MapSearch() {
                                                     .trim()}
                                             </span>
 
-                                            <span className="mt-1 text-xs text-muted-foreground">
+                                            {/* <span className="mt-1 text-xs text-muted-foreground">
                                                 {place.lat.toFixed(5)}, {place.lon.toFixed(5)}
-                                            </span>
+                                            </span> */}
                                         </div>
                                     </div>
                                 </CommandItem>
                             ))}
                         </CommandGroup>
+
+                        {query && query != "" && (
+                            <div className="flex w-full p-0 sticky bottom-0 z-100">
+                                <Button variant={'outline'} className={'w-full'} size={'lg'} onClick={e => {
+                                    setQuery("")
+                                }} >
+                                    <XIcon className="size-4 shrink-0 opacity-50" />
+                                    Clear
+                                </Button>
+                            </div>
+                        )}
+
+
                     </CommandList>
                 </Command>
             </PopoverContent>
