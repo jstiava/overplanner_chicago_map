@@ -535,8 +535,11 @@ export const MAP_CONFIG: MAP_CONFIG_SCHEMA = {
                             ]
                         }
                     },
+                    // @ts-ignore
                     chi_roads_with_permit_twoway_neg,
+                    // @ts-ignore
                     chi_roads_with_permit_twoway_pos,
+                    // @ts-ignore
                     chi_roads_with_permit_oneway,
                     {
                         id: "road-labels",

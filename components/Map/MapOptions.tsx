@@ -168,7 +168,7 @@ export default function MapOptions() {
 
 
                         {/*  */}
-                        <div className="flex w-full gap-2">
+                        {/* <div className="flex w-full gap-2">
                             <Field>
                                 <FieldLabel htmlFor="map_type">
                                     <FieldContent>
@@ -188,7 +188,7 @@ export default function MapOptions() {
                                     </FieldContent>
                                 </FieldLabel>
                             </Field>
-                        </div>
+                        </div> */}
 
 
                         {/* Manage location services. */}
